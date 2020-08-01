@@ -1,0 +1,16 @@
+header {
+    text-align: center;
+    background-color: royalblue;
+    font-size: 5vmin;
+    padding: 2vmin;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    margin: 250px;
+}
+
+#row1 {
+    border-width: 200px;
+}
