@@ -1,16 +1,16 @@
 header {
     text-align: center;
-    background-color: royalblue;
-    font-size: 5vmin;
-    padding: 2vmin;
 }
 
-main {
-    display: grid;
-    place-items: center;
-    margin: 250px;
+table {
+    height: 400px;
+    width: 400px;
+    margin: 200px auto;
+    border-collapse: collapse;
+    border-style: hidden;
+    table-layout: fixed;
 }
 
-#row1 {
-    border-width: 200px;
+table td {
+    border: 5px solid black;
 }
