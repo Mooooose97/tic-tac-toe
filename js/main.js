@@ -1,7 +1,7 @@
 /*----- constants -----*/
 // Define required constants
 const players = {
-    'null': 'null',
+    'null': null,
     '1': 'X',
     '-1': 'O'
 };
@@ -30,7 +30,7 @@ const cells = Array.from(document.querySelectorAll('td'));
 
 /*----- event listeners -----*/
 // Handle a player clicking a square
-document.querySelector('#cell').addEventListener('click', handleClick);
+document.querySelector('tbody').addEventListener('click', handleClick);
 // Handle a player clicking the replay button
 document.getElementById('replay').addEventListener('click', init);
 
@@ -39,10 +39,32 @@ document.getElementById('replay').addEventListener('click', init);
 init();
 
 function handleClick(evt) {
-    console.log(evt.target);
+    // store index of cell clicked
+    const idx = parseInt(cells.indexOf(evt.target));
+    // Checking if clicked cell is filled or game is over
+    if (board[idx] || win !== null) return;
+    // Set value of board at index of cell to variable turn
+    board[idx] = turn;
+    // alternate turns by multiplying turn by -1 (player 1 player -1)
+    turn *= -1;
+    // update win value by invoking win condition function
+    win = winCondition();
+    // invoke render function
+    render();
+    console.log(turn);
+};
+// Reset board and set turn to player 1 or 'X'
+function init() {
+    board = [null, null, null, null, null, null, null, null, null];
+    turn = 1;
+    win = null;
 };
 
-function init() {
+function winCondition() {
+
+};
+
+function render() {
 
 };
 
