@@ -1,6 +1,6 @@
 /*----- constants -----*/
-// Define require constants
-
+// Define required constants
+const 
 
 /*----- app's state (variables) -----*/
 // Define required variables to track the state of the game
