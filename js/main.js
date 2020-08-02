@@ -1,6 +1,10 @@
 /*----- constants -----*/
 // Define required constants
-const 
+const colors = {
+    'null': null,
+    '1': 1,
+    '-1': -1,
+};
 
 /*----- app's state (variables) -----*/
 // Define required variables to track the state of the game
