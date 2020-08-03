@@ -27,6 +27,8 @@ let win;
 // Store elements on the page that will be accessed in code more than once in variables 
 // to make code more concise, readable and performant.
 const cells = Array.from(document.querySelectorAll('td'));
+// Message 
+const msg = document.getElementById('msg');
 
 /*----- event listeners -----*/
 // Handle a player clicking a square
@@ -51,20 +53,38 @@ function handleClick(evt) {
     win = winCondition();
     // invoke render function
     render();
-    console.log(turn);
 };
-// Reset board and set turn to player 1 or 'X'
+// Reset board and set turn to player 1 or 'X' then invoke render
 function init() {
     board = [null, null, null, null, null, null, null, null, null];
     turn = 1;
     win = null;
+    render();
 };
 
 function winCondition() {
-
+    // loop through each of the winning combos arrays
+    for (let i = 0; i < winningCombos.length; i++) {
+        // total up the three board positions using the three indexes in the current commbo, convert to absolute value (any negative to posivite)
+        if (Math.abs(board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]]) === 3) return board[winningCombos[i][0]];
+        // if total is 3, we have a winner
+    };
+    if (board.includes(null)) return null;
+    return 'T';
 };
 
 function render() {
-
+    // Iterating through board to update with a value of the turn in players object
+    board.forEach(function(c, idx) {
+        cells[idx].textContent = players[c];
+    });
+    // Print win, tie, or turn message
+    if (win === 'T') {
+        msg.innerHTML = 'Tie game!';
+    } else if (win) {
+        msg.innerHTML = `Winner is ${players[win].toUpperCase()}!`;
+    } else {
+        msg.innerHTML = `${players[turn].toUpperCase()}'s Turn`;
+    }
 };
 
