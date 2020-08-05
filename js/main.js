@@ -66,7 +66,15 @@ function winCondition() {
     // loop through each of the winning combos arrays
     for (let i = 0; i < winningCombos.length; i++) {
         // total up the three board positions using the three indexes in the current commbo, convert to absolute value (any negative to posivite)
-        if (Math.abs(board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]]) === 3) return board[winningCombos[i][0]];
+        //JS: this condition inside the parens in the line below was getting long!
+        //JS: I moved it on to separate lines to make it easier for me to follow your logic! :)
+        if (Math.abs(
+            board[winningCombos[i][0]] + 
+            board[winningCombos[i][1]] + 
+            board[winningCombos[i][2]]) 
+            === 3
+        ) 
+        return board[winningCombos[i][0]];
         // if total is 3, we have a winner
     };
     if (board.includes(null)) return null;
@@ -75,6 +83,7 @@ function winCondition() {
 
 function render() {
     // Iterating through board to update with a value of the turn in players object
+    // JS: consider renaming c here to an explicit name like cell or choice
     board.forEach(function(c, idx) {
         cells[idx].textContent = players[c];
     });
